@@ -1,29 +1,29 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { fetchPostsDetails } from '../slices/postsSlice';
-import styles from '../style/PostDetail.module.css';
+import { useParams } from 'react-router-dom';
 
 const PostDetail = () => {
     const { postId } = useParams();
     const dispatch = useDispatch();
-    const postDetails = useSelector((state) => state.posts.postDetails);
+    const { postDetails, loading, error } = useSelector((state) => state.posts);
 
     useEffect(() => {
         dispatch(fetchPostsDetails(postId));
     }, [dispatch, postId]);
 
-    if (!postDetails) return <p>Loading...</p>
+  
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+    if (!postDetails) return <p>No post details available.</p>;
 
     return (
-        <div className={styles.postDetail}>
+        <div>
             <h2>{postDetails.title}</h2>
-            <p>{postDetails.author}</p>
             <p>{postDetails.selftext}</p>
-            <div>
-                <span>Comments: {postDetails.num_comments}</span>
-                <span>Votes: {postDetails.score}</span>
-            </div>
+            <p>Author: {postDetails.author}</p>
+            <p>Number of comments: {postDetails.num_comments}</p>
+            <p>Score: {postDetails.score}</p>
         </div>
     );
 };

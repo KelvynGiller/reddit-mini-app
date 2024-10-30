@@ -9,7 +9,7 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
 export const fetchPostsDetails = createAsyncThunk('posts/fetchPostDetails', async (postId) => {
   const response = await fetch(`https://www.reddit.com/comments/${postId}.json`);
   const data = await response.json();
-  return data[0].data.children[0].data; // Obtendo detalhes do post
+  return data[0].data.children[0].data;
 });
 
 const postsSlice = createSlice({
