@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../slices/postsSlice';
 import styles from '../style/PostList.module.css';
+import { Link } from 'react-router-dom';
+
 
 const PostList = () => {
     const dispatch = useDispatch();
@@ -18,8 +20,10 @@ const PostList = () => {
         <div>
             {posts.map((post => (
                 <div key={post.data.id} className={styles.post}>
-                    <h3 className={styles.title}>{post.data.title}</h3>
-                    <p>{post.data.selftext}</p>
+                    <Link to={`/post/${post.id}`}>    
+                        <h3 className={styles.title}>{post.data.title}</h3>
+                    </Link> 
+                        <p>{post.data.selftext}</p>
                 </div>
             )))}
         </div>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPostsDetails } from '../slices/postsSlice';
+import styles from '../style/PostDetail.module.css';
 
 const PostDetail = () => {
     const { postId } = useParams();
