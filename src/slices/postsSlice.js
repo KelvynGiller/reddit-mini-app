@@ -20,11 +20,15 @@ const postsSlice = createSlice({
     error: '',
     postDetails: null,
     searchTerm: '',
+    selectedCategory: '',
   },
   reducers: {
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
+    setCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -55,6 +59,6 @@ const postsSlice = createSlice({
   },
 });
 
-export const { setSearchTerm } = postsSlice.actions;
+export const { setSearchTerm, setCategory } = postsSlice.actions;
 
 export default postsSlice.reducer;
