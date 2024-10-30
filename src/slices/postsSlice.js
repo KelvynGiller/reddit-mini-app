@@ -19,8 +19,13 @@ const postsSlice = createSlice({
     posts: [],
     error: '',
     postDetails: null,
+    searchTerm: '',
   },
-  reducers: {},
+  reducers: {
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -49,5 +54,7 @@ const postsSlice = createSlice({
       });
   },
 });
+
+export const { setSearchTerm } = postsSlice.actions;
 
 export default postsSlice.reducer;
