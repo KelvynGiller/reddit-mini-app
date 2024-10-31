@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setCategory } from '../slices/postsSlice';
+import { setCategory, applyFilters } from '../slices/postsSlice';
 
 const CategoryFilter = () => {
     const dispatch = useDispatch();
 
     const handleChange = (event) => {
         dispatch(setCategory(event.target.value));
+        dispatch(applyFilters());
     }
 
     return (

@@ -1,13 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setSearchTerm } from '../slices/postsSlice'
+import { setSearchTerm, applyFilters } from '../slices/postsSlice'
 
 const SearchBar = () => {
     const dispatch = useDispatch();
 
     const handleChange = (event) => {
         dispatch(setSearchTerm(event.target.value));
-    }
+        dispatch(applyFilters());
+    };
 
     return (
         <input
@@ -15,8 +16,8 @@ const SearchBar = () => {
             placeholder='Search posts...'
             onChange={handleChange}        
         />
-    )
-}
+    );
+};
 
 export default SearchBar;
 

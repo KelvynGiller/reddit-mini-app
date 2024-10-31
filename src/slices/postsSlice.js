@@ -11,6 +11,7 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState: {
     loading: false,
+    allPosts: [],
     posts: [],
     error: '',
     searchTerm: '',
@@ -19,10 +20,21 @@ const postsSlice = createSlice({
   reducers: {
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
+      postsSlice.caseReducers.applyFilters(state);
     },
     setCategory: (state, action) => {
       state.selectedCategory = action.payload;
-    }
+      postsSlice.caseReducers.applyFilters(state);
+    },
+    applyFilters: (state) => {
+      state.posts = state.allPosts.filter((post) => {
+        const matchesSearchTerm = post.data.title.toLowerCase().includes(state.searchTerm.toLowerCase());
+        const matchesCategory = state.selectedCategory
+          ? post.data.subreddit === state.selectedCategory
+          : true;
+        return matchesSearchTerm && matchesCategory;
+      });
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -31,8 +43,9 @@ const postsSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.loading = false;
-        state.posts = action.payload;
+        state.allPosts = action.payload;
         state.error = '';
+        postsSlice.caseReducers.applyFilters(state);
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.loading = false;
@@ -41,6 +54,6 @@ const postsSlice = createSlice({
   },
 });
 
-export const { setSearchTerm, setCategory } = postsSlice.actions;
+export const { setSearchTerm, setCategory, applyFilters } = postsSlice.actions;
 
 export default postsSlice.reducer;
