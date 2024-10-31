@@ -1,21 +1,31 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setSearchTerm, applyFilters } from '../slices/postsSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchTerm } from '../slices/postsSlice'
+import styles from '../style/SearchBar.module.css'
+
 
 const SearchBar = () => {
     const dispatch = useDispatch();
+    const { searchTerm } = useSelector((state) => state.posts);
 
-    const handleChange = (event) => {
-        dispatch(setSearchTerm(event.target.value));
-        dispatch(applyFilters());
-    };
+    const handleSearch = () => {
+        dispatch(setSearchTerm(searchTerm))
+    }
+
 
     return (
-        <input
+        <div className={styles.searchContainer}>
+          <input
             type="text"
-            placeholder='Search posts...'
-            onChange={handleChange}        
-        />
+            value={searchTerm}
+            onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+            placeholder="Search..."
+            className={styles.input}
+          />
+          <button onClick={handleSearch} className={styles.button}>
+            Search
+          </button>
+        </div>
     );
 };
 

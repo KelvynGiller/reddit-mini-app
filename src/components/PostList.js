@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../slices/postsSlice';
+import Post from './Post';
 import styles from '../style/PostList.module.css';
-import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar';
-import CategoryFilter from './CategoryFilter';
+
 
 const PostList = () => {
     const dispatch = useDispatch();
@@ -19,24 +18,21 @@ const PostList = () => {
        const matchesCategory = selectedCategory ? post.data.subreddit === selectedCategory : true;
 
        return matchesSearchTerm && matchesCategory;
-    }
-    );
+    });
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div>
-          <SearchBar />
-          <CategoryFilter />
-            {filteredPosts.map((post) => (
-                <div key={post.data.id} className={styles.post}>
-                    <Link to={`/post/${post.data.id}`}>
-                        <h3 className={styles.title}>{post.data.title}</h3>
-                    </Link>
-                    <p>{post.data.selftext}</p>
-                </div>
-            ))}
+        <div style={{ display: 'flex' }}>
+            <div className={styles.postContainer}>
+                {filteredPosts.map((post) => (
+                    <Post key={post.data.id} post={post} />
+                ))}
+            </div>
+            <div style={{ width: '33.33%' }}>
+                <p>subreddit</p>
+            </div>
         </div>
     );
 };
