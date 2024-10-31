@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchTerm } from '../slices/postsSlice'
 import styles from '../style/SearchBar.module.css'
@@ -7,9 +7,10 @@ import styles from '../style/SearchBar.module.css'
 const SearchBar = () => {
     const dispatch = useDispatch();
     const { searchTerm } = useSelector((state) => state.posts);
+    const [inputValue, setInputValue] = useState(searchTerm);
 
     const handleSearch = () => {
-        dispatch(setSearchTerm(searchTerm))
+        dispatch(setSearchTerm(inputValue))
     }
 
 
@@ -17,8 +18,8 @@ const SearchBar = () => {
         <div className={styles.searchContainer}>
           <input
             type="text"
-            value={searchTerm}
-            onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
             placeholder="Search..."
             className={styles.input}
           />
