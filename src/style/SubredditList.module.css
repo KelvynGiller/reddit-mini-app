@@ -1,0 +1,24 @@
+.subredditList {
+    width: 30%;
+    padding: 10px;
+    border-left: 1px solid #ccc;
+}
+
+.subredditList h2 {
+    margin-bottom: 10px;
+}
+
+.subredditList ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.subredditList li {
+    margin: 5px 0;
+    cursor: pointer;
+    color: #0079d3;
+}
+
+.subredditList li:hover {
+    text-decoration: underline;
+}
