@@ -24,7 +24,7 @@ const SubredditList = () => {
     const handleCategoryClick = (subreddit) => {
         console.log(`Selected subreddit: ${subreddit}`);
         dispatch(setCategory(subreddit));
-        dispatch(fetchPosts());
+        dispatch(fetchPosts(subreddit));
     };
     console.log('SubredditList rendered');
     return (
