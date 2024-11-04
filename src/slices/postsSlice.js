@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-  const response = await axios.get('https://www.reddit.com/r/popular.json');
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (subreddit = '') => {
+  const url = subreddit ? `https://www.reddit.com/r/${subreddit}.json` : 'https://www.reddit.com/r/popular.json';
+  const response = await axios.get(url);
   return response.data.data.children;
 });
 
