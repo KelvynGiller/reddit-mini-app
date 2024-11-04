@@ -16,7 +16,7 @@ const SubredditList = () => {
     ];
 
     return (
-        <div className={styles.SubredditList}>
+        <div className={styles.subredditList}>
             <h2>Subreddits</h2>
             <ul>
                 {subreddits.map((subreddit) => (

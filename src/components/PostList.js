@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../slices/postsSlice';
 import Post from './Post';
 import styles from '../style/PostList.module.css';
+import SubredditList from './SubredditList';
 
 
 const PostList = () => {
@@ -30,8 +31,8 @@ const PostList = () => {
                     <Post key={post.data.id} post={post} />
                 ))}
             </div>
-            <div style={{ width: '33.33%' }}>
-                <p>subreddit</p>
+            <div className={styles.subredditList}>
+                <SubredditList />
             </div>
         </div>
     );

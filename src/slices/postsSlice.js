@@ -20,7 +20,10 @@ const postsSlice = createSlice({
   reducers: {
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
-      postsSlice.caseReducers.applyFilters(state);
+      if (state.searchTerm === '') {
+        state.posts = state.allPosts
+      } else {
+      postsSlice.caseReducers.applyFilters(state);}
     },
     setCategory: (state, action) => {
       state.selectedCategory = action.payload;

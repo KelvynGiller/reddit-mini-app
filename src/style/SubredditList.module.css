@@ -1,24 +1,33 @@
 .subredditList {
-    width: 30%;
-    padding: 10px;
-    border-left: 1px solid #ccc;
+    width: 30%; 
+    background-color: #ffffff; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    padding: 15px; 
+    margin-left: 20px; 
 }
 
 .subredditList h2 {
     margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333; 
 }
 
 .subredditList ul {
-    list-style-type: none;
+    list-style-type: none; 
     padding: 0;
 }
 
 .subredditList li {
-    margin: 5px 0;
-    cursor: pointer;
-    color: #0079d3;
+    margin: 10px 0; 
+    padding: 10px;
+    border-radius: 4px; 
+    transition: background-color 0.2s; 
+    cursor: pointer; 
 }
 
 .subredditList li:hover {
-    text-decoration: underline;
+    background-color: #f7f7f7; 
+    color: #0079d3; 
+    font-weight: bold;
 }
