@@ -6,16 +6,14 @@ import axios from 'axios';
 const Post = ({ post }) => {
     const [showComments, setShowComments] = useState(false);
     const [comments, setComments] = useState([]);
+    const [votes, setVotes] = useState(post.data.ups || 0);
+    const [userVote, setUserVote] = useState(null); 
     const postDate = new Date(post.data.created_utc * 1000).toLocaleString();
 
     const fetchComments = useCallback(async () => {
         const url = `https://www.reddit.com/r/${post.data.subreddit}/comments/${post.data.id}.json`;
-        try {
-            const response = await axios.get(url);
-            setComments(response.data[1].data.children);
-        } catch (error) {
-            console.error("Error fetching comments:", error);
-        }
+        const response = await axios.get(url);
+        setComments(response.data[1].data.children);
     }, [post.data.subreddit, post.data.id]);
 
     const handleCommentsToggle = () => {
@@ -23,7 +21,17 @@ const Post = ({ post }) => {
             fetchComments();
         }
         setShowComments(!showComments);
-    }
+    };
+
+    const handleVote = (direction) => {
+        if (userVote === null) {
+            setVotes(direction === 'up' ? votes + 1 : votes - 1);
+            setUserVote(direction);
+        } else if (userVote !== direction) {
+            setVotes(direction === 'up' ? votes + 2 : votes - 2);
+            setUserVote(direction);
+        }
+    };
 
     return (
         <div className={styles.post}>
@@ -31,14 +39,15 @@ const Post = ({ post }) => {
                 <h3 className={styles.title}>{post.data.title}</h3>
             </Link>
             <p>Author: {post.data.author} | Posted: {postDate}</p>
-            {post.data.url && (
-                <img 
-                    src={post.data.url} 
-                    alt={post.data.title} 
-                    className={styles.image} 
-                />
-            )}
+            {post.data.url && <img src={post.data.url} alt={post.data.title} className={styles.image} />}
             <p>{post.data.selftext}</p>
+
+            <div className={styles.voting}>
+                <button onClick={() => handleVote('up')} disabled={userVote === 'up'}>↑</button>
+                <span>{votes}</span>
+                <button onClick={() => handleVote('down')} disabled={userVote === 'down'}>↓</button>
+            </div>
+
             <button onClick={handleCommentsToggle}>
                 {showComments ? 'Hide Comments' : 'Show Comments'}
             </button>
