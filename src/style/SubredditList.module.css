@@ -1,10 +1,18 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .subredditList {
-    width: 30%; 
-    background-color: #ffffff; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    padding: 15px; 
-    margin-left: 20px; 
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
 }
 
 .subredditList h2 {
@@ -19,15 +27,25 @@
 }
 
 .subredditList li {
+    display: flex;
+    align-items: center;
     margin: 10px 0; 
-    padding: 10px;
+    padding: 15px; 
     border-radius: 4px; 
     transition: background-color 0.2s; 
     cursor: pointer; 
+    height: 40px; 
 }
 
 .subredditList li:hover {
     background-color: #f7f7f7; 
-    color: #0079d3; 
-    font-weight: bold;
+    color: #1cad28; 
+}
+
+.icon {
+    width: 24px; 
+    height: 24px;
+    margin-right: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
 }

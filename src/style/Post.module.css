@@ -1,70 +1,76 @@
+* {
+  text-decoration: none;
+}
+
 .post {
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 10px 0;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s;
-    transition: transform 0.2s;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px auto;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s, transform 0.2s;
+  max-width: 70%;
+  width: 70%;
 }
 
 .post:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #43d300;
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1cad28;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
 }
 
 .image {
-    width: 50%; 
-    height: auto; 
-    border-radius: 4px; 
-    margin-bottom: 10px; 
+  width: 50%; 
+  height: auto; 
+  border-radius: 4px; 
+  margin-bottom: 10px; 
 }
 
 .selftext {
-    font-size: 14px;
-    color: #555;
-    margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+  margin-top: 8px;
 }
 
 .voting {
-    display: flex; 
-    align-items: center;
-    margin: 12px 0;
-  }
-  .voting button {
-    background-color: transparent; 
-    border: none; 
-    color: #0079d3; 
-    font-size: 20px; 
-    cursor: pointer; 
-  }
-  .voting button:disabled {
-    color: #ccc; 
-    cursor: not-allowed;
-  }
+  display: flex; 
+  align-items: center;
+  margin: 12px 0;
+}
 
-  .comments {
-    margin-top: 16px; 
-    background-color: #f6f6f6;
-    border-radius: 4px; 
-    padding: 10px; 
-  }
+.voting button {
+  background-color: transparent; 
+  border: none; 
+  color: #1cad28;
+  font-size: 20px; 
+  cursor: pointer; 
+}
 
-  .comments p {
-    margin: 5px 0;
-  }
-  
-  .meta {
-    font-size: 0.9rem;
-    color: #555;
-  }
+.voting button:disabled {
+  color: #ccc; 
+  cursor: not-allowed;
+}
+
+.comments {
+  margin-top: 16px; 
+  background-color: #f6f6f6;
+  border-radius: 4px; 
+  padding: 10px; 
+}
+
+.comments p {
+  margin: 5px 0;
+}
+
+.meta {
+  font-size: 0.9rem;
+  color: #555;
+}

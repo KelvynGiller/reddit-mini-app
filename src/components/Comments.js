@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../style/Comment.module.css';
 
-const Comment = ({ author, body, createdUtc }) => {
+const Comments = ({ author, body, createdUtc }) => {
     const commentDate = new Date(createdUtc * 1000).toLocaleString();
 
     return (
@@ -12,4 +12,4 @@ const Comment = ({ author, body, createdUtc }) => {
     );
 };
 
-export default Comment;
+export default Comments;

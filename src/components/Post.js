@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import styles from '../style/Post.module.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Comments from './Comments';
 
 const Post = ({ post }) => {
     const [showComments, setShowComments] = useState(false);
@@ -55,9 +56,12 @@ const Post = ({ post }) => {
                 <div className={styles.comments}>
                     {comments.length > 0 ? (
                         comments.map((comment) => (
-                            <div key={comment.data.id}>
-                                <p><strong>{comment.data.author}</strong>: {comment.data.body}</p>
-                            </div>
+                            <Comments 
+                                key={comment.data.id}
+                                author={comment.data.author}
+                                body={comment.data.body}
+                                createdUtc={comment.data.created_utc}
+                            />
                         ))
                     ) : (
                         <p>No comments available.</p>
