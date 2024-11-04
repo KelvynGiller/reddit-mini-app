@@ -7,7 +7,7 @@ const Post = ({ post }) => {
     const [showComments, setShowComments] = useState(false);
     const [comments, setComments] = useState([]);
     const [votes, setVotes] = useState(post.data.ups || 0);
-    const [userVote, setUserVote] = useState(null); 
+    const [userVote, setUserVote] = useState(null);
     const postDate = new Date(post.data.created_utc * 1000).toLocaleString();
 
     const fetchComments = useCallback(async () => {
@@ -38,7 +38,7 @@ const Post = ({ post }) => {
             <Link to={`/post/${post.data.id}`}>
                 <h3 className={styles.title}>{post.data.title}</h3>
             </Link>
-            <p>Author: {post.data.author} | Posted: {postDate}</p>
+            <p className={styles.meta}>Author: {post.data.author} | Posted: {postDate}</p>
             {post.data.url && <img src={post.data.url} alt={post.data.title} className={styles.image} />}
             <p>{post.data.selftext}</p>
 

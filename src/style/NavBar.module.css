@@ -21,3 +21,9 @@
     display: flex;
     justify-content: center;
   }
+
+  .logoImage {
+    width: 140px; 
+    height: auto; 
+    margin-right: 10px; 
+  }

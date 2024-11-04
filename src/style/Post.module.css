@@ -6,17 +6,21 @@
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s;
+    transition: transform 0.2s;
 }
 
 .post:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 .title {
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #0079d3;
+    color: #43d300;
     text-decoration: none;
+    margin-bottom: 0.5rem;
+
 }
 
 .image {
@@ -31,3 +35,36 @@
     color: #555;
     margin-top: 8px;
 }
+
+.voting {
+    display: flex; 
+    align-items: center;
+    margin: 12px 0;
+  }
+  .voting button {
+    background-color: transparent; 
+    border: none; 
+    color: #0079d3; 
+    font-size: 20px; 
+    cursor: pointer; 
+  }
+  .voting button:disabled {
+    color: #ccc; 
+    cursor: not-allowed;
+  }
+
+  .comments {
+    margin-top: 16px; 
+    background-color: #f6f6f6;
+    border-radius: 4px; 
+    padding: 10px; 
+  }
+
+  .comments p {
+    margin: 5px 0;
+  }
+  
+  .meta {
+    font-size: 0.9rem;
+    color: #555;
+  }
