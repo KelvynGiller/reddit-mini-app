@@ -36,13 +36,13 @@ Make sure you have **Node.js** and **npm** installed on your system.
 To start the development server, run:
     ```bash
     npm start
+    
 This will run the app in development mode at http://localhost:3000.
 
 ## Folder Structure
 Here’s an overview of the folder structure:
 
 - src/
-- _tests_/ - Contains the test files for each component.
 - components/ - Holds React components such as SubredditList and Post.
 - slices/ - Includes Redux slices, like postsSlice.js for state management.
 - App.js - Main application component.
